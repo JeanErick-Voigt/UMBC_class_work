@@ -38,19 +38,19 @@ struct money input()
 {
 	char line[NAMESIZE];
 	struct money temp;
-	printf("Enter a dollar amount. ");
+	printf("Enter a dollar amount. \n");
 	temp.dollars = atoi(fgets(line, NAMESIZE, stdin));
-	printf("enter cents");
+	printf("enter cents \n");
 	temp.cents = atoi(fgets(line, NAMESIZE, stdin));
 	return(temp);
 }
 
-void print(struct money a)
+void print(struct money *a)
 {
-	if(a.cents <= 9){
-		printf("Total amount $%d.0%d", a.dollars, a.cents);
+	if(a -> cents <= 9){
+		printf("Total amount $%d.0%d\n", a->dollars, a->cents);
 	}else{
-		printf("Total amount $%d.%d", a.dollars, a.cents);
+		printf("Total amount $%d.%d\n", a->dollars, a->cents);
 	}
 }
 
@@ -61,6 +61,7 @@ int main(void)
 	a = init(5,10);	
 	b = input();
 	c = add(&a, &b);
-	print(c);
+	print(&c);
+	printf("%d\n", a.dollars);
 	return(0);
 }
